@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="row">
+    <!-- Sidebar со списком заметок -->
+    <div class="col-md-4">
+        <ul class="list-group note-list">
+            <!-- Пример одной заметки -->
+            <li class="list-group-item note-item active-note">Заметка 1</li>
+            <li class="list-group-item note-item">Заметка 2</li>
+            <!-- Добавьте другие заметки по необходимости -->
+        </ul>
+    </div>
+
+    <!-- Редактор заметок -->
+    <div class="col-md-8">
+        <div class="note-editor">
+            <div class="form-group">
+                <input type="text" class="form-control note-title" placeholder="Заголовок">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control note-content" placeholder="Текст заметки"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control note-tags" placeholder="Теги">
+            </div> 
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,10 +1,11 @@
+from django.urls import path, include
 from django.contrib import admin
-from django.urls import path
 
 from main import views
 
 urlpatterns = [
-    path("", views.index),
-    path("login", views.login),
+    path("", include("main.urls")),
     path("admin/", admin.site.urls),
 ]
+
+handler404 = views.page_not_found

@@ -1,3 +1,39 @@
-.red {
-    color: red;
+body {
+    background-color: #f8f9fa;
 }
+
+.main-container {
+    margin-top: 20px;
+}
+
+.note-editor {
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #fff;
+    height: 500px;
+}
+
+.note-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.note-item {
+    padding: 10px;
+    border-bottom: 1px solid #dee2e6;
+    cursor: pointer;
+}
+
+.note-item:hover {
+    background-color: #f8f9fa;
+}
+
+.note-tags {
+    margin-top: 10px;
+}
+
+.active-note {
+    background-color: #e2e3e5;
+}
+
