@@ -90,7 +90,7 @@ body {
     padding: 0;
 }
 
-.note-preview-content {
+.note-preview-body {
     flex: grow 1;
 }
 
@@ -103,16 +103,25 @@ body {
     hyphens: auto;
 }
 
-.note-preview-text {
+.note-preview-content {
     font-size: 13px;
     margin-top: 4px;
 }
 
-.note-preview-text > span {
+.note-preview-content > span {
     min-width: 0;
     white-space: pre-wrap;
     word-break: break-word;
-    hyphens: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: 2;
+    -moz-line-clamp: 2;
 }
 
 .note-preview-controls {
@@ -210,21 +219,68 @@ body {
     background-color: #000;
     color: #fff;
     padding: .25rem 1rem;
+    margin-right: .25rem;
+    border-radius: 10px;
+    text-align: center;
+
+}
+
+.tag-item {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tag-item:hover {
+    background-color: #ededed;
+}
+
+.tag-item-text {
+    margin-left: 1rem;
+    text-align: center;
+}
+
+.tag-add-btn {
+    padding: .25rem 1rem;
+    border-color: #000;
     border-radius: 10px;
     text-align: center;
 }
-.note-editor-tag:not(:last-child) {
-    margin-right: .25rem;
+.tag-add-btn:hover {
+    border-color: #000;
 }
 
-.note-editor-update {
-    color: #87898f;
+.tag-delete-btn:hover {
+    background-color: #cd9696;
+}
+
+.note-save-btn {
     font-size: 16px;
     line-height: 20px;
     font-weight: 400;
     text-align: center;
 }
 
+.note-save-btn.state-untouched {
+    display: none;
+}
 
+.note-save-btn.state-edited {
+    background-color: #d8b99c;
+}
+.note-save-btn.state-edited:hover {
+    background-color: #da9a5f;
+}
+.note-save-btn.state-edited::before {
+    content: "Сохранить";
+}
+
+.note-save-btn.state-saved {
+    background-color: #8ad483;
+    opacity: 70%;
+    pointer-events: none;
+}
+.note-save-btn.state-saved::before {
+    content: "Сохранено!";
+}
 
 

@@ -1,0 +1,64 @@
+<div class="note-editor-container">
+    <div class="note-editor-area base-item">
+        <div class="d-flex flex-column h-100">
+            <div class="note-editor-header d-flex flex-column">
+                <input value="{{ active_note.title }}" id="noteEditorTitle" type="text" class="form-control note-input note-editor-title" placeholder="Введите название">
+                <div class="note-editor-date">
+                    <span id="noteEditorCreatedAt">{{ active_note.created_at }}</span>
+                </div>
+            </div>
+
+            <div class="note-editor" id="noteEditor" data-active-note-id="{{ active_note.pk }}">
+                <textarea id="noteEditorContent" class="form-control note-input note-editor-content" placeholder="Напишите заметку...">{{ active_note.content }}</textarea>
+            </div>
+
+            <div class="note-editor-footer">
+                <div class="d-flex flex-row align-items-center">
+                    <div id="noteEditorTags" class="note-editor-tags">
+                        {% for tag in active_note.tags.all %}
+                            <div class="note-editor-tag"><span>{{ tag.name }}</span></div>
+                        {% endfor %}
+                    </div>
+
+                    <button type="button" class="btn tag-add-btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">теги</button>
+                        <ul class="dropdown-menu">
+                            {% for tag in tags %}
+                                <li class="tag-item d-flex">
+                                    <span class="tag-item-text" data-tag-id="{{ tag.pk }}">{{ tag.name }}</span>
+                                    <button type="button" class="btn icon-btn tag-delete-btn" data-bs-toggle="modal" data-bs-target="#tagDeleteModal">
+                                        <span >
+                                            <svg height="16px" width="16px" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z"/>
+                                            </svg>
+                                        </span>
+                                    </button>
+                                </li>
+                            {% endfor %}
+                            <li><hr class="dropdown-divider"></li>
+                            <li><input type="text" class="dropdown-item form-control" placeholder="новый..."></li>
+                        </ul>
+                    
+                    <button id="noteSaveBtn" class="btn note-save-btn ms-auto state-untouched"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade tag-delete-modal" id="tagDeleteModal" tabindex="-1" aria-labelledby="tagDeleteModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="tagDeleteModalLabel">Удалить тег?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        Тег буден удален из всех заметок, содержащих его.
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
+        <button type="button" class="btn btn-danger">Удалить</button>
+    </div>
+    </div>
+</div>
+</div>
