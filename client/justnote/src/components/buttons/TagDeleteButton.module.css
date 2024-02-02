@@ -1,0 +1,14 @@
+.tagDeleteBtn{
+    background-color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    height: 36px;
+    width: 36px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.tagDeleteBtn:hover {
+    background-color: #cd9696;
+}

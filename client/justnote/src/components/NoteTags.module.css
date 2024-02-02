@@ -1,0 +1,29 @@
+.noteTags {
+    display: flex;
+    flex-direction: row;
+}
+
+.searchTag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searchTag:hover {
+    background-color: #ededed;
+}
+
+.searchTagText {
+    margin-left: 1rem;
+    text-align: center;
+}
+
+.tagAddBtn {
+    padding: .25rem 1rem;
+    border-color: #000;
+    border-radius: 10px;
+    text-align: center;
+}
+.tagAddBtn:hover {
+    border-color: #000;
+}

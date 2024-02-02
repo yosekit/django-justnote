@@ -1,0 +1,14 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #f6f7f8;
+  /* overflow: hidden; */
+}
+
+::selection,
+::-moz-selection {
+    background-color: #7e7d7c;
+    color: #ffffff;
+}

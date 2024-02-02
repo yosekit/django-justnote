@@ -1,0 +1,29 @@
+.saveBtn {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.saveBtn.untouched {
+    display: none;
+}
+
+.saveBtn.edited {
+    background-color: #d8b99c;
+}
+.saveBtn.edited:hover {
+    background-color: #da9a5f;
+}
+.saveBtn.edited::before {
+    content: "Сохранить";
+}
+
+.saveBtn.saved {
+    background-color: #8ad483;
+    opacity: 70%;
+    pointer-events: none;
+}
+.saveBtn.saved::before {
+    content: "Сохранено!";
+}

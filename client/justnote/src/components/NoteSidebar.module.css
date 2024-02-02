@@ -1,0 +1,13 @@
+.container {
+    padding-left: 0;
+    padding-right: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.controls {
+    display: flex;
+    margin-bottom: .75rem;
+    justify-content: flex-end;
+}

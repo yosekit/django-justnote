@@ -1,0 +1,90 @@
+.item {
+    background-color: #ffffff;
+    padding: 1rem;
+    align-items: center;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.item:not(:last-child) {
+    margin-bottom: .5rem;
+}
+.item:hover:not(.active) {
+    background-color: #ededed;
+}
+
+.active {
+    background-color: #e3e5ea;
+}
+
+
+.previewMain {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.previewBody {
+    flex: grow 1;
+}
+
+.previewTitle {
+    font-size: 17px;
+    font-weight: 600;
+    min-width: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+.previewContent {
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.previewContent > span {
+    min-width: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: 2;
+    -moz-line-clamp: 2;
+}
+
+.previewControls {
+    display: flex;
+    flex-shrink: 0;
+    margin-left: 8px;
+    margin-right: -8px;
+    margin-top: -8px;
+}
+
+.previewFooter {
+    margin-top: 4px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.previewDate {
+    font-size: 13px;
+    color: #87898f;
+    padding: 1px 0;
+    white-space: nowrap;
+}
+
+.deleteBtn {
+    opacity: 0;
+}
+.item:hover .deleteBtn {
+    opacity: 1;
+}

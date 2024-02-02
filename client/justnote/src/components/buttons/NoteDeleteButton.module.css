@@ -1,0 +1,25 @@
+.deleteBtn {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    height: 36px;
+    width: 36px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.deleteBtn:hover {
+    background-color: #cd9696;
+}
+
+.deleteBtn > span {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
