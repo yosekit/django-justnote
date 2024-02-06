@@ -9,10 +9,10 @@ from .serializers import *
 
 
 def index(request: HttpRequest):
-    return render(request, "index.html", context={"title": "Index Page"})
+    return render(request, "build/index.html")
 
 def login(request: HttpRequest):
-    return render(request, "login.html", context={"title": "Login Page"})
+    return render(request, "login.html")
 
 def page_not_found(request: HttpRequest, exception):
     return HttpResponseNotFound(content='Страница не найдена')
