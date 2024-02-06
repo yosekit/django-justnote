@@ -26,17 +26,17 @@ export default function Notes() {
     }
 
     async function createNote() {
-        let data = await NoteService.Create();
+        await NoteService.Create();
         fetchNotes();
     }
 
     async function deleteNote(pk) {
-        let data = await NoteService.Delete(pk);
+        await NoteService.Delete(pk);
         fetchNotes();
     }
 
     async function updateNote(note) {
-        let data = await NoteService.Update(note);
+        await NoteService.Update(note);
         setNoteUpdated(true);
         fetchNotes();
     }
@@ -45,16 +45,16 @@ export default function Notes() {
         <Container style={{ height: 'calc(100% - 80px)', flexGrow: 1, marginTop: '3rem' }}>
             <Row className='h-100'>
                 <Col className='md-4 h-100'>
-                    <NoteSidebar data={notes}
+                    <NoteSidebar notes={notes}
                     activeNote={activeNote}
-                    setActiveNote={setActiveNote}
+                    onNoteClick={(note) => setActiveNote(note)}
                     onCreateClick={createNote}
                     onDeleteNote={deleteNote} />
                 </Col>
 
                 {activeNote && (
                     <Col className='md-8 h-100'>
-                        <NoteEditor data={ activeNote } isNoteUpdated={isNoteUpdated} onUpdateNote={updateNote}/>
+                        <NoteEditor activeNote={ activeNote } isNoteUpdated={isNoteUpdated} onUpdateNote={updateNote}/>
                     </Col>
                 )}
             </Row>

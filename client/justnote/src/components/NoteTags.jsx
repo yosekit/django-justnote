@@ -10,8 +10,8 @@ import TagDeleteModal from './modals/TagDeleteModal';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Form from 'react-bootstrap/Form';
 
-
-export default function NoteTags({ data: note }) {
+// TODO: onChange
+export default function NoteTags({ note, onChange }) {
     const [searchTags, setSearchTags] = useState([]);
     const fetchSearchTags = () => {
         const data = TagService.ReadExcept(note.pk);
@@ -19,8 +19,8 @@ export default function NoteTags({ data: note }) {
     }
 
     const [searchTagName, setSearchTagName] = useState('');
-    const handleSearchTag = (event) => {
-        setSearchTagName(event.target.value);
+    const handleSearchTag = (e) => {
+        setSearchTagName(e.target.value);
     };
 
     const [isModalOpen, setModalOpen] = useState(false);
@@ -32,7 +32,7 @@ export default function NoteTags({ data: note }) {
             <div className='d-flex flex-row'>
                 <div className={styles.noteTags}>
                     {note.tags.map(tag =>
-                        <NoteTag data={tag} key={tag.pk} />
+                        <NoteTag key={tag.pk} tag={tag} />
                     )}
                 </div>
                 <Dropdown>

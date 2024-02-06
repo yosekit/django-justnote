@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import styles from './NoteItem.module.css';
 
 import NoteDeleteButton from './buttons/NoteDeleteButton';
+import DateFormatter from '../utilities/DateFormatter';
 
 
-export default function NoteItem({ data: note, isActive, onClick, onClickDelete}) {
+export default function NoteItem({ note, isActive, onClick, onClickDelete}) {
     const rootStyles = [styles.item];
     if (isActive) {rootStyles.push(styles.active);}
 
@@ -20,7 +21,7 @@ export default function NoteItem({ data: note, isActive, onClick, onClickDelete}
                 </div>
             </div>
             <div className={styles.previewFooter}>
-                <span className={styles.previewDate}>{ note.created_at }</span>
+                <span className={styles.previewDate}>{ DateFormatter.Format(note.created_at) }</span>
             </div>
         </li>
     )

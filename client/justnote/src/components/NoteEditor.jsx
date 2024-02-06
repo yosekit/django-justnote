@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './NoteEditor.module.css';
 import NoteStates from '../NoteStates.js';
 
@@ -6,23 +6,31 @@ import Form from 'react-bootstrap/Form';
 
 import NoteTags from './NoteTags';
 import NoteSaveButton from './buttons/NoteSaveButton';
+import DateFormatter from '../utilities/DateFormatter';
 
 
-export default function NoteEditor({ data: note, isNoteUpdated, onUpdateNote }) {
+export default function NoteEditor({ activeNote, isNoteUpdated, onUpdateNote }) {
   const [noteState, setNoteState] = useState(isNoteUpdated ? NoteStates.Saved : NoteStates.Untouched);
 
-  const [titleValue, setTitleValue] = useState(note.title);
-  const [contentValue, setContentValue] = useState(note.content);
+  const [titleValue, setTitleValue] = useState(activeNote.title);
+  const [contentValue, setContentValue] = useState(activeNote.content);
 
-  const handleInputTitle = (event) => {
+  useEffect(() => {
+    if (activeNote) {
+      setTitleValue(activeNote.title);
+      setContentValue(activeNote.content);
+    }
+  }, [activeNote]);
+
+  const OnTitleChange = (e) => {
+    setTitleValue(e.target.value);
     setNoteState(NoteStates.Edited);
-    setTitleValue(event.target.value);
   };
-  const handleInputContent = (event) => {
+  const onContentChange = (e) => {
+    setContentValue(e.target.value);
     setNoteState(NoteStates.Edited);
-    setContentValue(event.target.value);
   }
-  const handleInputTags = () => {
+  const OnTagsChange = () => {
     setNoteState(NoteStates.Edited);
   };
 
@@ -32,18 +40,24 @@ export default function NoteEditor({ data: note, isNoteUpdated, onUpdateNote }) 
         <div className='d-flex flex-column h-100'>
           <Form>
             <div className={styles.header}>
-              <Form.Control value={titleValue} as='input' type='text' onChange={handleInputTitle} className={styles.inputTitle} placeholder='Введите название'/>
+              <Form.Control as='input' type='text' placeholder='Введите название'
+              value={titleValue}  
+              onChange={OnTitleChange} 
+              className={styles.inputTitle} />
               <div className={styles.date}>
-                <span>{ note.created_at }</span>
+                <span>{ DateFormatter.Format(activeNote.created_at) }</span>
               </div>
             </div>
             <div className={styles.body}>
-              <Form.Control value={contentValue} as='textarea' type='text' onChange={handleInputContent} className={styles.inputContent} placeholder='Напишите заметку...'/>
+              <Form.Control as='textarea' type='text' placeholder='Напишите заметку...'
+              value={contentValue} 
+              onChange={onContentChange} 
+              className={styles.inputContent} />
             </div>
             <div className={styles.footer}>
               <div className='d-flex flex-row align-items-center justify-content-between'>
-                <NoteTags data={note} onChanged={handleInputTags}/>
-                <NoteSaveButton state={noteState} onClick={() => {onUpdateNote(note)}} />
+                <NoteTags note={activeNote} onChange={OnTagsChange}/>
+                <NoteSaveButton state={noteState} onClick={() => {onUpdateNote(activeNote)}} />
               </div>
             </div>
           </Form>
