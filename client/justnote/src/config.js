@@ -1,5 +1,8 @@
 export const Urls = {
-    Host: "http://127.0.0.1:8000/",
+    // DEBUG
+    // Host: "http://127.0.0.1:8000/",
+    // PRODUCTION
+    Host: "http://mos202.pythonanywhere.com/",
     Api: {
         Notes: {
             ReadAll: "api/notes/",
