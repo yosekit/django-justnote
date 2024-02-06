@@ -9,7 +9,7 @@ from .serializers import *
 
 
 def index(request: HttpRequest):
-    return render(request, "build/index.html")
+    return render(request, "index.html")
 
 def login(request: HttpRequest):
     return render(request, "login.html")
